@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">PescaRecreativa</string>
+    <string name="titulo_formulario">Ingrese sus datos</string>
+    <string name="hint_nombre">Nombre</string>
+    <string name="hint_apellido">Apellido</string>
+    <string name="hint_fecha_nac">Fecha de nacimiento</string>
+    <string name="aceptar">Aceptar</string>
+    <string name="descripcionSplashScreen">Hook</string>
+
+</resources>
