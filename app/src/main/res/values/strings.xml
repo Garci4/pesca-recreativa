@@ -6,5 +6,8 @@
     <string name="hint_fecha_nac">Fecha de nacimiento</string>
     <string name="aceptar">Aceptar</string>
     <string name="descripcionSplashScreen">Hook</string>
+    <string name="label_usuario">usuario</string>
+    <string name="label_password">contraseña</string>
+    <string name="label_start_session">Ingresar</string>
 
 </resources>

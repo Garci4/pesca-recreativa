@@ -31,13 +31,11 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-
     private fun cambiar_activity() {
         Handler().postDelayed(Runnable {
-            val intent = Intent(this, FormularioActivity::class.java)
+            val intent = Intent(this, LoginActivity::class.java)
             startActivity(intent)
         }, DURACION_SPLASHSCREEN)
     }
-
 
 }
