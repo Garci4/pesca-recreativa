@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/fragmentHome"
+        android:icon="@drawable/ic_home"
+        android:checkable="true"
+        android:checked="true"
+        android:title="Home"/>
+
+    <item
+        android:id="@+id/fragmentFormularioAltaReporte"
+        android:icon="@drawable/ic_nuevo"
+        android:checkable="true"
+        android:title="Nuevo reporte"/>
+
+    <item
+        android:id="@+id/fragmentMisReportes"
+        android:icon="@drawable/ic_reportes"
+        android:checkable="true"
+        android:title="Mis Reportes"/>
+
+    <item
+        android:id="@+id/fragmentRegulaciones"
+        android:icon="@drawable/ic_menu_book"
+        android:checkable="true"
+        android:title="Regulaciones"/>
+
+</menu>
