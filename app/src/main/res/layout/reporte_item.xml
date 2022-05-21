@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <ImageView
+        android:id="@+id/ivReporte"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        tools:background="@color/black"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <TextView
+        android:id="@+id/tvReporteTitulo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="titulo"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toEndOf="@id/ivReporte"/>
+
+    <TextView
+        android:id="@+id/tvReporteDescripcion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="descripcion"
+        app:layout_constraintTop_toBottomOf="@id/tvReporteTitulo"
+        app:layout_constraintStart_toEndOf="@id/ivReporte"/>
+
+    <TextView
+        android:id="@+id/tvReporteLugarCaptura"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="Lugar Captura"
+        app:layout_constraintTop_toBottomOf="@id/tvReporteDescripcion"
+        app:layout_constraintStart_toEndOf="@id/ivReporte"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

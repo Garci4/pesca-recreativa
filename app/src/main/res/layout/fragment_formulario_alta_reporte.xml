@@ -29,27 +29,27 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/margin_top"
+            android:autofillHints=""
             android:hint="@string/hint_nombre"
-            android:inputType="text"
-            android:autofillHints="" />
+            android:inputType="text" />
 
         <EditText
             android:id="@+id/editApellido"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/margin_top"
+            android:autofillHints=""
             android:hint="@string/hint_apellido"
-            android:inputType="text"
-            android:autofillHints="" />
+            android:inputType="text" />
 
         <EditText
             android:id="@+id/editFecha_nac"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/margin_top"
+            android:autofillHints=""
             android:hint="@string/hint_fecha_nac"
-            android:inputType="date"
-            android:autofillHints="" />
+            android:inputType="date" />
 
         <Button
             android:id="@+id/boton_aceptar"
