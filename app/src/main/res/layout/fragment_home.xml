@@ -12,6 +12,6 @@
         android:textStyle="bold"
         android:textSize="35sp"
         android:textColor="@color/black"
-        android:text="home" />
+        android:text="Bienvenido a Pesca Recreativa" />
 
 </FrameLayout>

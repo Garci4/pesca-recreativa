@@ -23,6 +23,6 @@
     <fragment
         android:id="@+id/fragmentRegulaciones"
         android:name="com.example.pescarecreativa.fragments.FragmentRegulaciones"
-        android:label="Regulaciones"
+        android:label="Reglamentaciones"
         tools:layout="@layout/fragment_regulaciones" />
 </navigation>

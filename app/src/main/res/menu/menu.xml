@@ -23,6 +23,6 @@
         android:id="@+id/fragmentRegulaciones"
         android:icon="@drawable/ic_menu_book"
         android:checkable="true"
-        android:title="Regulaciones"/>
+        android:title="Reglamentaciones"/>
 
 </menu>

@@ -12,6 +12,6 @@
         android:textStyle="bold"
         android:textSize="35dp"
         android:textColor="@color/black"
-        android:text="Regulaciones" />
+        android:text="Reglamentaciones" />
 
 </FrameLayout>
