@@ -1,15 +1,15 @@
 <resources>
     <string name="app_name">PescaRecreativa</string>
-    <string name="titulo_formulario">Ingrese sus datos</string>
-    <string name="hint_nombre">Nombre</string>
-    <string name="hint_apellido">Apellido</string>
-    <string name="hint_fecha_nac">Fecha de nacimiento</string>
+    <string name="titulo_formulario">Nuevo reporte</string>
+    <string name="hint_titulo">Titulo</string>
+    <string name="hint_descripcion">Descripcion</string>
+    <string name="hint_lugar_captura">Lugar captura</string>
+    <string name="hint_foto">Ingrese una imagen</string>
     <string name="aceptar">Aceptar</string>
     <string name="descripcionSplashScreen">Hook</string>
     <string name="label_usuario">usuario</string>
     <string name="label_password">contraseña</string>
     <string name="label_start_session">Ingresar</string>
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_home">home</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>

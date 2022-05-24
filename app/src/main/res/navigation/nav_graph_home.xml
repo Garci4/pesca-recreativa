@@ -8,21 +8,21 @@
     <fragment
         android:id="@+id/fragmentHome"
         android:name="com.example.pescarecreativa.fragments.FragmentHome"
-        android:label="fragment_home"
+        android:label="Home"
         tools:layout="@layout/fragment_home" />
     <fragment
         android:id="@+id/fragmentFormularioAltaReporte"
         android:name="com.example.pescarecreativa.fragments.FragmentFormularioAltaReporte"
-        android:label="fragment_formulario_alta_reporte"
+        android:label="Nuevo reporte"
         tools:layout="@layout/fragment_formulario_alta_reporte" />
     <fragment
         android:id="@+id/fragmentMisReportes"
         android:name="com.example.pescarecreativa.fragments.FragmentMisReportes"
-        android:label="fragment_mis_reportes"
+        android:label="Mis Reportes"
         tools:layout="@layout/fragment_mis_reportes" />
     <fragment
         android:id="@+id/fragmentRegulaciones"
         android:name="com.example.pescarecreativa.fragments.FragmentRegulaciones"
-        android:label="fragment_regulaciones"
+        android:label="Regulaciones"
         tools:layout="@layout/fragment_regulaciones" />
 </navigation>

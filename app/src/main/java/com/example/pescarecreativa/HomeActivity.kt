@@ -12,6 +12,10 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.example.pescarecreativa.adapter.ReporteAdapter
+import com.example.pescarecreativa.modelo.ReporteService
 import com.google.android.material.navigation.NavigationView
 
 class HomeActivity : AppCompatActivity() {
@@ -39,6 +43,7 @@ class HomeActivity : AppCompatActivity() {
         navigationView.setupWithNavController(navController)
 
     }
+
 
     override fun onSupportNavigateUp(): Boolean {
         val navController = findNavController(R.id.fragmentContainerView)
