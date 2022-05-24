@@ -25,31 +25,40 @@
         android:orientation="vertical">
 
         <EditText
-            android:id="@+id/editNombre"
+            android:id="@+id/editTitulo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/margin_top"
             android:autofillHints=""
-            android:hint="@string/hint_nombre"
+            android:hint="@string/hint_titulo"
             android:inputType="text" />
 
         <EditText
-            android:id="@+id/editApellido"
+            android:id="@+id/editDescripcion"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/margin_top"
             android:autofillHints=""
-            android:hint="@string/hint_apellido"
+            android:hint="@string/hint_descripcion"
             android:inputType="text" />
 
         <EditText
-            android:id="@+id/editFecha_nac"
+            android:id="@+id/editLugarCaptura"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/margin_top"
             android:autofillHints=""
-            android:hint="@string/hint_fecha_nac"
-            android:inputType="date" />
+            android:hint="@string/hint_lugar_captura"
+            android:inputType="text" />
+
+        <EditText
+            android:id="@+id/editFoto"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_top"
+            android:autofillHints=""
+            android:hint="@string/hint_foto"
+            android:inputType="text" />
 
         <Button
             android:id="@+id/boton_aceptar"

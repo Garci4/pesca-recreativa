@@ -2,7 +2,7 @@ package com.example.pescarecreativa.modelo
 
 class ReporteService {
     companion object{
-        val listaReportes = listOf<Reporte>(
+        var listaReportes = listOf<Reporte>(
             Reporte("Captura 1", "Descripcion de la captura 1", "Playa Union", "https://diariolaportada.com.ar/wp-content/uploads/2022/04/pesca-3.jpg"),
             Reporte("Captura 2", "Descripcion de la captura 2", "Santa Isabel", "https://diariolaportada.com.ar/wp-content/uploads/2022/04/pesca-3.jpg"),
             Reporte("Captura 4", "Descripcion de la captura 4", "Playa Union", "https://diariolaportada.com.ar/wp-content/uploads/2022/04/pesca-3.jpg"),
@@ -14,5 +14,6 @@ class ReporteService {
             Reporte("Captura 9", "Descripcion de la captura 9", "Pto Madryn", "https://diariolaportada.com.ar/wp-content/uploads/2022/04/pesca-3.jpg"),
             Reporte("Captura 10", "Descripcion de la captura 10", "Playa Union", "https://diariolaportada.com.ar/wp-content/uploads/2022/04/pesca-3.jpg")
         )
+
     }
 }
