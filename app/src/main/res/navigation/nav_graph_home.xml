@@ -19,10 +19,19 @@
         android:id="@+id/fragmentMisReportes"
         android:name="com.example.pescarecreativa.fragments.FragmentMisReportes"
         android:label="Mis Reportes"
-        tools:layout="@layout/fragment_mis_reportes" />
+        tools:layout="@layout/fragment_mis_reportes" >
+        <action
+            android:id="@+id/action_fragmentMisReportes_to_fragmentDetalleReporte2"
+            app:destination="@id/fragmentDetalleReporte2" />
+    </fragment>
     <fragment
         android:id="@+id/fragmentRegulaciones"
         android:name="com.example.pescarecreativa.fragments.FragmentRegulaciones"
         android:label="Reglamentaciones"
         tools:layout="@layout/fragment_regulaciones" />
+    <fragment
+        android:id="@+id/fragmentDetalleReporte2"
+        android:name="com.example.pescarecreativa.fragments.FragmentDetalleReporte"
+        android:label="Reporte"
+        tools:layout="@layout/fragment_detalle_reporte" />
 </navigation>

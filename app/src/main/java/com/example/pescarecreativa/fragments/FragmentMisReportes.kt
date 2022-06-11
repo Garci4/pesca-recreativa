@@ -5,6 +5,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.commit
+import androidx.navigation.Navigation
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -25,9 +28,20 @@ class FragmentMisReportes : Fragment() {
     override fun onViewCreated(itemView: View, savedInstanceState: Bundle?) {
         super.onViewCreated(itemView, savedInstanceState)
         val rv = itemView.findViewById<RecyclerView>(R.id.rvMisReportes)
-            rv.layoutManager = LinearLayoutManager(activity)
-            // set the custom adapter to the RecyclerView
-            rv.adapter = ReporteAdapter(ReporteService.listaReportes)
+        rv.layoutManager = LinearLayoutManager(activity)
+        // set the custom adapter to the RecyclerView
+        val adapter = ReporteAdapter(ReporteService.listaReportes)
+        rv.adapter = adapter
+
+        adapter.setOnItemClickListener(object : ReporteAdapter.onItemClickListener {
+            override fun onItemClick(position: Int) {
+                val activity = itemView!!.context as AppCompatActivity
+                val fragmentDetalleReporte = FragmentDetalleReporte(ReporteService.listaReportes[position])
+                //findNavController().navigate(R.id.action_fragmentMisReportes_to_fragmentDetalleReporte2)
+                activity.supportFragmentManager.beginTransaction().replace(R.id.fragmentContainerView, fragmentDetalleReporte).addToBackStack(null).commit()
+            }
+
+        })
 
     }
 
