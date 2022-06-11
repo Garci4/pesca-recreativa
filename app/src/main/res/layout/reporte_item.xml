@@ -50,6 +50,15 @@
             app:layout_constraintTop_toBottomOf="@id/tvReporteLugarCaptura"
             app:layout_constraintStart_toEndOf="@id/ivReporte"/>
 
+        <TextView
+            android:id="@+id/tvReporteFechaCaptura"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="fecha"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvReporteDescripcion"
+            app:layout_constraintStart_toEndOf="@id/ivReporte"/>
+
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
