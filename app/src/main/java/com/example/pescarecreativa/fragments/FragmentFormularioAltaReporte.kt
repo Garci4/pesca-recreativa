@@ -60,6 +60,7 @@ class FragmentFormularioAltaReporte : Fragment() {
             val foto = view.findViewById<EditText>(R.id.editFoto).text.toString()
             val reporte = Reporte(titulo = titulo, descripcion = descripcion, lugarCaptura = lugarCaptura, foto = foto, fechaCaptura = fechaCaptura.text.toString())
             ReporteService.listaReportes = ReporteService.listaReportes + reporte
+            ReporteService.agregarReporte(reporte)
             activity?.let {
                 val intent = Intent (it, HomeActivity::class.java)
                 it.startActivity(intent)

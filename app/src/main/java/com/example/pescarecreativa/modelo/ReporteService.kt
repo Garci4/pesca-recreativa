@@ -1,5 +1,8 @@
 package com.example.pescarecreativa.modelo
 
+import com.google.firebase.ktx.Firebase
+import com.google.firebase.firestore.ktx.firestore
+
 class ReporteService {
     companion object{
         var listaReportes = listOf<Reporte>(
@@ -15,5 +18,17 @@ class ReporteService {
             Reporte("Captura 10", "Descripcion de la captura 10", "Playa Union", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTwrgKts4wD-4bOEMJ3qKD_kCict_1QNTf2fQ&usqp=CAU", "06/06/2022")
         )
 
+        fun agregarReporte(reporte: Reporte) {
+            val db = Firebase.firestore
+
+            val r = hashMapOf(
+                "titulo" to reporte.titulo,
+                "descripcion" to reporte.descripcion,
+                "lugarCaptura" to reporte.lugarCaptura,
+                "fechaCaptura" to reporte.lugarCaptura,
+                "foto" to reporte.foto,
+            )
+            db.collection("reporte").add(r)
+        }
     }
 }
