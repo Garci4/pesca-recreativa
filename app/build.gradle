@@ -22,10 +22,13 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
 
-        debug {
+        /**
+         * Las siguientes lineas se comentaron para que pueda andar firebase firestore con el plugin
+         * debug {
             applicationIdSuffix ".debug"
             debuggable true
         }
+         */
 
         /**
          * The `initWith` property allows you to copy configurations from other build types,
@@ -95,3 +98,5 @@ dependencies {
     // When using the BoM, you don't specify versions in Firebase library dependencies
     implementation 'com.google.firebase:firebase-firestore-ktx'
 }
+
+apply plugin: 'com.google.gms.google-services'

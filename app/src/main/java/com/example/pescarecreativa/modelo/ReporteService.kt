@@ -1,5 +1,8 @@
 package com.example.pescarecreativa.modelo
 
+import android.content.ContentValues.TAG
+import android.util.Log
+import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.firestore.ktx.firestore
 
@@ -18,9 +21,7 @@ class ReporteService {
             Reporte("Captura 10", "Descripcion de la captura 10", "Playa Union", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTwrgKts4wD-4bOEMJ3qKD_kCict_1QNTf2fQ&usqp=CAU", "06/06/2022")
         )
 
-        fun agregarReporte(reporte: Reporte) {
-            val db = Firebase.firestore
-
+        fun agregarReporte(db: FirebaseFirestore, reporte: Reporte) {
             val r = hashMapOf(
                 "titulo" to reporte.titulo,
                 "descripcion" to reporte.descripcion,
@@ -28,7 +29,13 @@ class ReporteService {
                 "fechaCaptura" to reporte.lugarCaptura,
                 "foto" to reporte.foto,
             )
-            db.collection("reporte").add(r)
+            db.collection("reporte")
+                .add(r)
+                .addOnSuccessListener { documentReference ->
+                    Log.d(TAG, "guardado con exito")
+                }
+                .addOnFailureListener { e ->
+                    Log.w(TAG, "error en guardado", e)                }
         }
     }
 }

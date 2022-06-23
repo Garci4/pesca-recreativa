@@ -14,13 +14,19 @@ import com.example.pescarecreativa.HomeActivity
 import com.example.pescarecreativa.R
 import com.example.pescarecreativa.modelo.Reporte
 import com.example.pescarecreativa.modelo.ReporteService
+import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
 import java.text.SimpleDateFormat
 import java.util.*
 
 class FragmentFormularioAltaReporte : Fragment() {
 
+    private lateinit var db: FirebaseFirestore
+
     override fun onCreateView( inflater: LayoutInflater, container: ViewGroup?,savedInstanceState: Bundle? ): View? {
         // Inflate the layout for this fragment
+        db = FirebaseFirestore.getInstance()
         return inflater.inflate(R.layout.fragment_formulario_alta_reporte, container, false)
     }
 
@@ -60,7 +66,7 @@ class FragmentFormularioAltaReporte : Fragment() {
             val foto = view.findViewById<EditText>(R.id.editFoto).text.toString()
             val reporte = Reporte(titulo = titulo, descripcion = descripcion, lugarCaptura = lugarCaptura, foto = foto, fechaCaptura = fechaCaptura.text.toString())
             ReporteService.listaReportes = ReporteService.listaReportes + reporte
-            ReporteService.agregarReporte(reporte)
+            ReporteService.agregarReporte(db, reporte)
             activity?.let {
                 val intent = Intent (it, HomeActivity::class.java)
                 it.startActivity(intent)
