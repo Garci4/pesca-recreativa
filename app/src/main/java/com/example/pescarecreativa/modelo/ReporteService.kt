@@ -2,7 +2,12 @@ package com.example.pescarecreativa.modelo
 
 import android.content.ContentValues.TAG
 import android.util.Log
+import com.google.android.gms.tasks.OnFailureListener
+import com.google.android.gms.tasks.OnSuccessListener
+import com.google.firebase.firestore.CollectionReference
+import com.google.firebase.firestore.DocumentSnapshot
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.QuerySnapshot
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.firestore.ktx.firestore
 
@@ -20,6 +25,30 @@ class ReporteService {
             Reporte("Captura 9", "Descripcion de la captura 9", "Pto Madryn", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTCsVXRe5tO6F9W3k2SBnaMhtnoGG03ijRBWg&usqp=CAU", "06/06/2022"),
             Reporte("Captura 10", "Descripcion de la captura 10", "Playa Union", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTwrgKts4wD-4bOEMJ3qKD_kCict_1QNTf2fQ&usqp=CAU", "06/06/2022")
         )
+
+        fun obtenerReportes(db: FirebaseFirestore): List<Reporte> {
+            var reporte: Reporte
+            val result = db.collection("reporte").get()
+                .addOnSuccessListener(OnSuccessListener<QuerySnapshot> { document -> //Esta linea tiene que estar para que la peticion termine
+                    Log.d(TAG, "DocumentSnapshot data: ${document.documents}")
+                })
+                .addOnFailureListener(OnFailureListener{ exception ->
+                    Log.d(TAG, "get failed with ", exception)
+                })
+            var misReportes = listOf<Reporte>()
+            for (r in result.result) {
+                val data = r.data as Map<String, String>
+                reporte = Reporte(
+                    data["titulo"].toString(),
+                    data["descripcion"].toString(),
+                    data["lugarCaptura"].toString(),
+                    data["fechaCaptura"].toString(),
+                    data["foto"].toString()
+                )
+                misReportes = misReportes + reporte
+            }
+            return misReportes
+        }
 
         fun agregarReporte(db: FirebaseFirestore, reporte: Reporte) {
             val r = hashMapOf(
