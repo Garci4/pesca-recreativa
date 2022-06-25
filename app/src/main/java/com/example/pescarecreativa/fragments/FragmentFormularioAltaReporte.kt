@@ -2,6 +2,7 @@ package com.example.pescarecreativa.fragments
 
 import android.app.DatePickerDialog
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -23,6 +24,12 @@ import java.util.*
 class FragmentFormularioAltaReporte : Fragment() {
 
     private lateinit var db: FirebaseFirestore
+    private lateinit var view_global: View
+    private lateinit var uriImagen: Uri?
+
+    companion object {
+        val IMAGE_REQUEST_CODE = 100
+    }
 
     override fun onCreateView( inflater: LayoutInflater, container: ViewGroup?,savedInstanceState: Bundle? ): View? {
         // Inflate the layout for this fragment
@@ -31,10 +38,27 @@ class FragmentFormularioAltaReporte : Fragment() {
     }
 
 
+    private fun pickImageGallery(view: View) {
+        val intent = Intent(Intent.ACTION_PICK)
+        intent.type = "image/*"
+        startActivityForResult(intent, IMAGE_REQUEST_CODE)
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if(requestCode == IMAGE_REQUEST_CODE) {
+            val edt_imagen = view_global.findViewById<EditText>(R.id.editFoto)
+            uriImagen =  data?.data
+        }
+    }
+
+
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        view_global = view
         val btn = view.findViewById<Button>(R.id.boton_aceptar)
+        val btn_elegir_imagen = view.findViewById<Button>(R.id.btn_elegir_imagen)
         var cal = Calendar.getInstance()
         val fechaCaptura = view.findViewById<EditText>(R.id.editFechaCaptura)
         val dateSetListener = object : DatePickerDialog.OnDateSetListener {
@@ -57,6 +81,11 @@ class FragmentFormularioAltaReporte : Fragment() {
                         cal.get(Calendar.MONTH),
                         cal.get(Calendar.DAY_OF_MONTH)).show()
                 }
+        })
+        btn_elegir_imagen.setOnClickListener(object: View.OnClickListener {
+            override fun onClick(view: View) {
+                pickImageGallery(view)
+            }
         })
 
         btn.setOnClickListener(View.OnClickListener { view2 ->

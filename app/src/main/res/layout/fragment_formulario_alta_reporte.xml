@@ -71,6 +71,13 @@
             android:inputType="text" />
 
         <Button
+            android:id="@+id/btn_elegir_imagen"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_top"
+            android:text="elegir imagen" />
+
+        <Button
             android:id="@+id/boton_aceptar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
