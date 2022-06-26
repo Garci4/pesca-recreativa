@@ -2,30 +2,45 @@ package com.example.pescarecreativa.fragments
 
 import android.app.DatePickerDialog
 import android.content.Intent
+import android.graphics.Bitmap
+import android.graphics.drawable.BitmapDrawable
 import android.net.Uri
 import android.os.Bundle
+import android.provider.MediaStore
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.DatePicker
-import android.widget.EditText
+import android.widget.*
 import com.example.pescarecreativa.HomeActivity
 import com.example.pescarecreativa.R
 import com.example.pescarecreativa.modelo.Reporte
 import com.example.pescarecreativa.modelo.ReporteService
+import com.google.android.gms.tasks.Continuation
+import com.google.android.gms.tasks.Task
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
+import com.google.firebase.storage.FirebaseStorage
+import com.google.firebase.storage.StorageReference
+import com.google.firebase.storage.UploadTask
+import java.io.ByteArrayOutputStream
+import java.net.URI
 import java.text.SimpleDateFormat
 import java.util.*
 
 class FragmentFormularioAltaReporte : Fragment() {
 
     private lateinit var db: FirebaseFirestore
+    private lateinit var storage: FirebaseStorage
     private lateinit var view_global: View
-    private lateinit var uriImagen: Uri?
+
+    private var filePath: Uri? = null
+    private var storageReference: StorageReference? = null
+
+    private lateinit var urlImagenEnFireStorage: String
+
+
 
     companion object {
         val IMAGE_REQUEST_CODE = 100
@@ -34,6 +49,8 @@ class FragmentFormularioAltaReporte : Fragment() {
     override fun onCreateView( inflater: LayoutInflater, container: ViewGroup?,savedInstanceState: Bundle? ): View? {
         // Inflate the layout for this fragment
         db = FirebaseFirestore.getInstance()
+        storage = FirebaseStorage.getInstance()
+        storageReference = FirebaseStorage.getInstance().reference
         return inflater.inflate(R.layout.fragment_formulario_alta_reporte, container, false)
     }
 
@@ -47,12 +64,18 @@ class FragmentFormularioAltaReporte : Fragment() {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if(requestCode == IMAGE_REQUEST_CODE) {
-            val edt_imagen = view_global.findViewById<EditText>(R.id.editFoto)
-            uriImagen =  data?.data
+            val ivFoto = view_global.findViewById<ImageView>(R.id.ivFoto)
+            ivFoto.setImageURI(data?.data)
+            //Aca se sube la imagen a firestorage
+            filePath = data?.data
+
+                //val bitmap = (ivFoto.drawable as BitmapDrawable).bitmap
+                //val baos = ByteArrayOutputStream()
+                //bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos)
+                //val data_imagen = baos.toByteArray()
+                uploadImage()
         }
     }
-
-
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -92,8 +115,14 @@ class FragmentFormularioAltaReporte : Fragment() {
             val titulo:String = view.findViewById<EditText>(R.id.editTitulo).text.toString()
             val descripcion = view.findViewById<EditText>(R.id.editDescripcion).text.toString()
             val lugarCaptura = view.findViewById<EditText>(R.id.editLugarCaptura).text.toString()
-            val foto = view.findViewById<EditText>(R.id.editFoto).text.toString()
-            val reporte = Reporte(titulo = titulo, descripcion = descripcion, lugarCaptura = lugarCaptura, foto = foto, fechaCaptura = fechaCaptura.text.toString())
+            //val foto = view.findViewById<EditText>(R.id.editFoto).text.toString()
+            val reporte = Reporte(
+                titulo = titulo,
+                descripcion = descripcion,
+                lugarCaptura = lugarCaptura,
+                foto = urlImagenEnFireStorage,
+                fechaCaptura = fechaCaptura.text.toString()
+            )
             ReporteService.listaReportes = ReporteService.listaReportes + reporte
             ReporteService.agregarReporte(db, reporte)
             activity?.let {
@@ -102,5 +131,36 @@ class FragmentFormularioAltaReporte : Fragment() {
                 print("asd")
             }
         })
+    }
+
+
+    private fun uploadImage(){
+        if(filePath != null){
+            val ref = storageReference?.child(UUID.randomUUID().toString())
+            val uploadTask = ref?.putFile(filePath!!)
+
+            val urlTask = uploadTask?.continueWithTask(Continuation<UploadTask.TaskSnapshot, Task<Uri>> { task ->
+                if (!task.isSuccessful) {
+                    task.exception?.let {
+                        throw it
+                    }
+                }
+                return@Continuation ref.downloadUrl
+            })?.addOnCompleteListener { task ->
+                if (task.isSuccessful) {
+
+                    val downloadUri = task.result
+                    urlImagenEnFireStorage = downloadUri.toString()
+                    print("---------------------esta es la urlll")
+                    print(urlImagenEnFireStorage)
+                } else {
+                    // Handle failures
+                }
+            }?.addOnFailureListener{
+
+            }
+        }else{
+            Toast.makeText(context, "Please Upload an Image", Toast.LENGTH_SHORT).show()
+        }
     }
 }

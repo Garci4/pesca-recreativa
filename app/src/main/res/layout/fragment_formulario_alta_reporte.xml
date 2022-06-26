@@ -7,84 +7,80 @@
     tools:context=".fragments.FragmentFormularioAltaReporte"
     android:background="@color/white">
 
-    <TextView
-        android:id="@+id/titulo_formulario"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/titulo_formulario"
-        android:textSize="@dimen/tamanio_letra"
-        android:layout_centerHorizontal="true"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="@dimen/margin_top"
-        android:orientation="vertical">
+        android:layout_height="match_parent">
 
-        <EditText
-            android:id="@+id/editTitulo"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_marginTop="@dimen/margin_top"
-            android:autofillHints=""
-            android:hint="@string/hint_titulo"
-            android:inputType="text" />
+            android:orientation="vertical">
 
-        <EditText
-            android:id="@+id/editDescripcion"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/margin_top"
-            android:autofillHints=""
-            android:hint="@string/hint_descripcion"
-            android:inputType="text" />
+            <EditText
+                android:id="@+id/editTitulo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_top"
+                android:autofillHints=""
+                android:hint="@string/hint_titulo"
+                android:inputType="text" />
 
-        <EditText
-            android:id="@+id/editLugarCaptura"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/margin_top"
-            android:autofillHints=""
-            android:hint="@string/hint_lugar_captura"
-            android:inputType="text" />
+            <EditText
+                android:id="@+id/editDescripcion"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_top"
+                android:autofillHints=""
+                android:hint="@string/hint_descripcion"
+                android:inputType="text" />
 
-        <EditText
-            android:id="@+id/editFechaCaptura"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/margin_top"
-            android:autofillHints=""
-            android:hint="Fecha captura"
-            android:inputType="text" />
+            <EditText
+                android:id="@+id/editLugarCaptura"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_top"
+                android:autofillHints=""
+                android:hint="@string/hint_lugar_captura"
+                android:inputType="text" />
 
-        <EditText
-            android:id="@+id/editFoto"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/margin_top"
-            android:autofillHints=""
-            android:hint="@string/hint_foto"
-            android:inputType="text" />
+            <EditText
+                android:id="@+id/editFechaCaptura"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_top"
+                android:autofillHints=""
+                android:hint="Fecha captura"
+                android:inputType="text" />
 
-        <Button
-            android:id="@+id/btn_elegir_imagen"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/margin_top"
-            android:text="elegir imagen" />
+            <ImageView
+                android:id="@+id/ivFoto"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_top"
+                android:autofillHints=""
+                android:hint="@string/hint_foto"
+                android:inputType="text" />
 
-        <Button
-            android:id="@+id/boton_aceptar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/margin_top"
-            android:text="@string/aceptar" />
+            <Button
+                android:id="@+id/btn_elegir_imagen"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_top"
+                android:text="elegir imagen" />
 
-    </LinearLayout>
+            <Button
+                android:id="@+id/boton_aceptar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_top"
+                android:layout_marginBottom="50dp"
+                android:text="@string/aceptar" />
+
+        </LinearLayout>
+
+    </ScrollView>
 
 
 </RelativeLayout>
