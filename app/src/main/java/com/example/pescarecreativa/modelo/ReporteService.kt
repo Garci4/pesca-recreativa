@@ -13,6 +13,8 @@ import com.google.firebase.firestore.ktx.firestore
 
 class ReporteService {
     companion object{
+        var listaReportesFirebase = listOf<Reporte>()
+
         var listaReportes = listOf<Reporte>(
             Reporte("Captura 1", "Descripcion de la captura 1", "Playa Union", "https://diariolaportada.com.ar/wp-content/uploads/2022/04/pesca-3.jpg", "06/06/2022"),
             Reporte("Captura 2", "Descripcion de la captura 2", "Santa Isabel", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTSdiielKiJjpT9LlmyMlGucWSfwUZxdqShrw&usqp=CAU", "06/06/2022"),
@@ -36,6 +38,7 @@ class ReporteService {
                     Log.d(TAG, "get failed with ", exception)
                 })
             var misReportes = listOf<Reporte>()
+            Thread.sleep(1500)
             for (r in result.result) {
                 val data = r.data as Map<String, String>
                 reporte = Reporte(
@@ -46,7 +49,9 @@ class ReporteService {
                     data["foto"].toString()
                 )
                 misReportes = misReportes + reporte
+
             }
+            listaReportesFirebase = misReportes
             return misReportes
         }
 
@@ -55,7 +60,7 @@ class ReporteService {
                 "titulo" to reporte.titulo,
                 "descripcion" to reporte.descripcion,
                 "lugarCaptura" to reporte.lugarCaptura,
-                "fechaCaptura" to reporte.lugarCaptura,
+                "fechaCaptura" to reporte.fechaCaptura,
                 "foto" to reporte.foto,
             )
             db.collection("reporte")

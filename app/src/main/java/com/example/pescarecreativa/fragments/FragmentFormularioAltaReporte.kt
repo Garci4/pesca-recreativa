@@ -17,6 +17,7 @@ import com.example.pescarecreativa.R
 import com.example.pescarecreativa.modelo.Reporte
 import com.example.pescarecreativa.modelo.ReporteService
 import com.google.android.gms.tasks.Continuation
+import com.google.android.gms.tasks.OnSuccessListener
 import com.google.android.gms.tasks.Task
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
@@ -38,7 +39,7 @@ class FragmentFormularioAltaReporte : Fragment() {
     private var filePath: Uri? = null
     private var storageReference: StorageReference? = null
 
-    private lateinit var urlImagenEnFireStorage: String
+    private var urlImagenEnFireStorage: String = "asdasd"
 
 
 
@@ -68,12 +69,7 @@ class FragmentFormularioAltaReporte : Fragment() {
             ivFoto.setImageURI(data?.data)
             //Aca se sube la imagen a firestorage
             filePath = data?.data
-
-                //val bitmap = (ivFoto.drawable as BitmapDrawable).bitmap
-                //val baos = ByteArrayOutputStream()
-                //bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos)
-                //val data_imagen = baos.toByteArray()
-                uploadImage()
+            uploadImage()
         }
     }
 
@@ -115,20 +111,18 @@ class FragmentFormularioAltaReporte : Fragment() {
             val titulo:String = view.findViewById<EditText>(R.id.editTitulo).text.toString()
             val descripcion = view.findViewById<EditText>(R.id.editDescripcion).text.toString()
             val lugarCaptura = view.findViewById<EditText>(R.id.editLugarCaptura).text.toString()
-            //val foto = view.findViewById<EditText>(R.id.editFoto).text.toString()
             val reporte = Reporte(
                 titulo = titulo,
                 descripcion = descripcion,
                 lugarCaptura = lugarCaptura,
-                foto = urlImagenEnFireStorage,
-                fechaCaptura = fechaCaptura.text.toString()
+                fechaCaptura = fechaCaptura.text.toString(),
+                foto = urlImagenEnFireStorage
             )
             ReporteService.listaReportes = ReporteService.listaReportes + reporte
             ReporteService.agregarReporte(db, reporte)
             activity?.let {
                 val intent = Intent (it, HomeActivity::class.java)
                 it.startActivity(intent)
-                print("asd")
             }
         })
     }

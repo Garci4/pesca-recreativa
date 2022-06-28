@@ -39,8 +39,7 @@ class FragmentMisReportes : Fragment() {
         adapter.setOnItemClickListener(object : ReporteAdapter.onItemClickListener {
             override fun onItemClick(position: Int) {
                 val activity = itemView!!.context as AppCompatActivity
-                val fragmentDetalleReporte = FragmentDetalleReporte(ReporteService.listaReportes[position])
-                //findNavController().navigate(R.id.action_fragmentMisReportes_to_fragmentDetalleReporte2)
+                val fragmentDetalleReporte = FragmentDetalleReporte(ReporteService.listaReportesFirebase[position])
                 activity.supportFragmentManager.beginTransaction().replace(R.id.fragmentContainerView, fragmentDetalleReporte).addToBackStack(null).commit()
             }
 
