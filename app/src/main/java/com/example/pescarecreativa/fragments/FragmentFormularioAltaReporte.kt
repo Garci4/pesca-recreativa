@@ -52,6 +52,7 @@ class FragmentFormularioAltaReporte : Fragment() {
         db = FirebaseFirestore.getInstance()
         storage = FirebaseStorage.getInstance()
         storageReference = FirebaseStorage.getInstance().reference
+
         return inflater.inflate(R.layout.fragment_formulario_alta_reporte, container, false)
     }
 

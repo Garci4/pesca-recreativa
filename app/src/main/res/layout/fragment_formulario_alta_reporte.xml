@@ -7,7 +7,6 @@
     tools:context=".fragments.FragmentFormularioAltaReporte"
     android:background="@color/white">
 
-
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -44,6 +43,8 @@
                 android:autofillHints=""
                 android:hint="@string/hint_lugar_captura"
                 android:inputType="text" />
+
+
 
             <EditText
                 android:id="@+id/editFechaCaptura"
