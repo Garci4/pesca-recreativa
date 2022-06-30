@@ -14,17 +14,31 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.pescarecreativa.R
 import com.example.pescarecreativa.adapter.ReporteAdapter
 import com.example.pescarecreativa.adapter.ReporteViewHolder
+import com.example.pescarecreativa.databinding.ActivityHomeBinding
 import com.example.pescarecreativa.modelo.ReporteService
+import com.google.android.gms.maps.CameraUpdateFactory
+import com.google.android.gms.maps.GoogleMap
+import com.google.android.gms.maps.OnMapReadyCallback
+import com.google.android.gms.maps.SupportMapFragment
+import com.google.android.gms.maps.model.BitmapDescriptorFactory
+import com.google.android.gms.maps.model.LatLng
+import com.google.android.gms.maps.model.MarkerOptions
 import com.google.firebase.firestore.FirebaseFirestore
 
 
-class FragmentMisReportes : Fragment() {
+class FragmentMisReportes : Fragment(), OnMapReadyCallback {
     private lateinit var db: FirebaseFirestore
+    private lateinit var mMap: GoogleMap
+    private lateinit var latlongMarcador: String
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         db = FirebaseFirestore.getInstance()
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_mis_reportes, container, false)
+
+        val mapFragment = childFragmentManager.findFragmentById(R.id.mapView) as SupportMapFragment?
+        mapFragment?.getMapAsync(this)
+
         return view
     }
 
@@ -46,6 +60,29 @@ class FragmentMisReportes : Fragment() {
         })
 
     }
+
+    override fun onMapReady(googleMap: GoogleMap?) {
+        var posicion: LatLng
+        for (reporte in ReporteService.listaReportesFirebase) {
+            posicion = getLatLong(reporte?.lugarCaptura)
+            if (googleMap != null) {
+                mMap = googleMap
+            }
+            mMap.addMarker(
+                MarkerOptions().position(posicion).title(reporte.titulo)
+                    .snippet(reporte.descripcion)
+                    .rotation(-15.0f)
+                    .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_VIOLET)))
+            mMap.moveCamera(CameraUpdateFactory.newLatLng(posicion));
+        }
+    }
+
+    private fun getLatLong(posicion: String): LatLng {
+        var delimiter = "*"
+        val parts = posicion.split(delimiter)
+        return LatLng(parts[0].toDouble(), parts[1].toDouble())
+    }
+
 
 
 }
