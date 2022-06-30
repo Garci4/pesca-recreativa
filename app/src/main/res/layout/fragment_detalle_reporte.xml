@@ -7,58 +7,73 @@
     tools:context=".fragments.FragmentDetalleReporte"
     android:background="@color/white">
 
-    <LinearLayout
-        android:id="@+id/fragmentDetalleReporte"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="wrap_content">
 
-        <TextView
-            android:id="@+id/tvDetalleReporteTitulo"
+        <LinearLayout
+            android:id="@+id/fragmentDetalleReporte"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10sp"
-            android:layout_marginHorizontal="16dp"
-            android:textStyle="bold"
-            android:textSize="20sp"
-            tools:text="titulo" />
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-        <ImageView
-            android:id="@+id/ivDetalleReporte"
-            android:layout_width="match_parent"
-            android:layout_height="350dp"
-            android:layout_marginHorizontal="16dp"
-            android:layout_marginVertical="8dp"
-            tools:background="@color/black"
-            android:contentDescription="Foto del reporte"/>
+            <TextView
+                android:id="@+id/tvDetalleReporteTitulo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10sp"
+                android:layout_marginHorizontal="16dp"
+                android:textStyle="bold"
+                android:textSize="24sp"
+                tools:text="titulo" />
 
-        <TextView
-            android:id="@+id/tvDetalleReporteDescripcion"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            tools:text="Descripcion"
-            android:layout_marginHorizontal="16dp"
-            android:layout_marginVertical="8sp"
-            android:textStyle="normal"
-            android:textSize="16sp"/>
+            <ImageView
+                android:id="@+id/ivDetalleReporte"
+                android:layout_width="match_parent"
+                android:layout_height="350dp"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginVertical="8dp"
+                tools:background="@color/black"
+                android:contentDescription="Foto del reporte"/>
 
+            <TextView
+                android:id="@+id/tvDetalleReporteDescripcion"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="Descripcion"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginVertical="8sp"
+                android:textStyle="normal"
+                android:textSize="20sp"/>
 
-        <TextView
-            android:id="@+id/tvDetalleReporteLugarCaptura"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            tools:text="Lugar captura"
-            android:layout_marginHorizontal="16dp"
-            android:layout_marginVertical="8sp"
-            android:textStyle="normal"
-            android:textSize="16sp"/>
+            <TextView
+                android:id="@+id/tvDetalleReporteLatitud"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="Latitud"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginVertical="8sp"
+                android:textStyle="normal"
+                android:textSize="20sp"/>
 
-        <fragment
-            android:layout_width="match_parent"
-            android:layout_height="250dp"
-            android:id="@+id/mapView"
-            android:name="com.google.android.gms.maps.SupportMapFragment"/>
+            <TextView
+                android:id="@+id/tvDetalleReporteLongitud"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="Longitud"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginVertical="8sp"
+                android:textStyle="normal"
+                android:textSize="20sp"/>
 
-    </LinearLayout>
+            <fragment
+                android:layout_width="match_parent"
+                android:layout_height="250dp"
+                android:id="@+id/mapView"
+                android:name="com.google.android.gms.maps.SupportMapFragment"/>
+
+        </LinearLayout>
+
+    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

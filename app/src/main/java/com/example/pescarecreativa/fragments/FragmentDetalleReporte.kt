@@ -40,9 +40,11 @@ class FragmentDetalleReporte(rep: Reporte) : Fragment(), GoogleMap.OnMapClickLis
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val binding = FragmentDetalleReporteBinding.bind(view)
+        var lugarDeCapturaSplit = reporte.lugarCaptura.split("*")
         binding.tvDetalleReporteTitulo.text = reporte.titulo
         binding.tvDetalleReporteDescripcion.text = reporte.descripcion
-        binding.tvDetalleReporteLugarCaptura.text = reporte.lugarCaptura
+        binding.tvDetalleReporteLatitud.text = "Latitud: ".plus(lugarDeCapturaSplit[0])
+        binding.tvDetalleReporteLongitud.text = "Longitud: ".plus(lugarDeCapturaSplit[1])
         Glide.with(binding.ivDetalleReporte.context).load(reporte.foto).into(binding.ivDetalleReporte)
     }
 
