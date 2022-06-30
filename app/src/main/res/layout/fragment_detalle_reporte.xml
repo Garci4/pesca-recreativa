@@ -53,6 +53,12 @@
             android:textStyle="normal"
             android:textSize="16sp"/>
 
+        <fragment
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:id="@+id/mapView"
+            android:name="com.google.android.gms.maps.SupportMapFragment"/>
+
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

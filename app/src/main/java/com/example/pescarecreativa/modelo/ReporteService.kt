@@ -39,7 +39,7 @@ class ReporteService {
                     Log.d(TAG, "get failed with ", exception)
                 })
             var misReportes = listOf<Reporte>()
-            Thread.sleep(1500)
+            Thread.sleep(5500)
             for (r in result.result) {
                 val data = r.data as Map<String, String>
                 reporte = Reporte(
