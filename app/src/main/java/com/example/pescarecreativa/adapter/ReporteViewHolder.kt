@@ -23,16 +23,11 @@ class ReporteViewHolder(view: View, listener: ReporteAdapter.onItemClickListener
         }
     }
 
-
     fun render(reporte: Reporte){
-        print(reporte)
         Log.d(ContentValues.TAG, "////reporte: ${reporte}")
         binding.tvReporteTitulo.text = reporte.titulo
         binding.tvReporteDescripcion.text = reporte.descripcion
-        binding.tvReporteLugarCaptura.text = reporte.lugarCaptura
         binding.tvReporteFechaCaptura.text = reporte.fechaCaptura
         Glide.with(binding.ivReporte.context).load(reporte.foto).into(binding.ivReporte)
     }
-
-
 }
