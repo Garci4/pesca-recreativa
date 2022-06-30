@@ -1,18 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".fragments.FragmentHome"
     android:background="@color/white">
 
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="center"
-        android:textStyle="bold"
-        android:textSize="35sp"
-        android:textColor="@color/black"
-        android:text="Bienvenido a Pesca Recreativa" />
+        android:id="@+id/cabecera"
+        android:orientation="vertical">
 
-</FrameLayout>
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="273dp"
+            android:background="@drawable/homebg">
+
+            <ImageView
+                android:layout_width="265dp"
+                android:layout_height="137dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="90dp"
+                android:src="@drawable/logo1" />
+        </FrameLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="232dp"
+            android:gravity="center"
+            android:text="Bienvenido a Pesca Recreativa"
+            android:textColor="@color/black"
+            android:textSize="35sp"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
