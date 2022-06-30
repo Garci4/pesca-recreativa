@@ -37,12 +37,8 @@
 
             <EditText
                 android:id="@+id/editLugarCaptura"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/margin_top"
-                android:autofillHints=""
-                android:hint="@string/hint_lugar_captura"
-                android:inputType="text" />
+                android:layout_width="0dp"
+                android:layout_height="0dp"></EditText>
 
             <EditText
                 android:id="@+id/editFechaCaptura"
@@ -56,8 +52,8 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Ingrese la ubicacion de la captura">
-
+                android:text="Ingrese la ubicacion de la captura"
+                android:layout_marginTop="@dimen/margin_top">
             </TextView>
 
             <fragment
@@ -80,7 +76,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/margin_top"
-                android:text="elegir imagen" />
+                android:text="subir imagen" />
 
             <Button
                 android:id="@+id/boton_aceptar"
