@@ -3,16 +3,84 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".fragments.FragmentRegulaciones"
     android:background="@color/white">
 
-    <TextView
+    <ScrollView
         android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:gravity="center"
-        android:textStyle="bold"
-        android:textSize="35dp"
-        android:textColor="@color/black"
-        android:text="Reglamentaciones" />
+        android:orientation="vertical"
+        android:layout_marginHorizontal="@dimen/margin_top"
+        android:layout_marginTop="@dimen/margin_top">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Reglamento General de Pesca Deportiva Continental Patagónico"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            ></TextView>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text=" A partir del día 1° de noviembre de 2023 se prohibirá la utilización de botas de vadeo con suelas de fieltro, sin perjuicio de que para algunos ambientes particulares se prohíba con anticipación a esa fecha. Consultar los listados de ambientes de la Parte Segunda de este reglamento."
+            android:textSize="14sp"
+            android:textStyle="normal"
+            android:textColor="@color/black"
+            ></TextView>
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_top"
+            android:text="Temporada de pesca en la región Chubut"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            ></TextView>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="a.En la Provincia del Chubut, la temporada de pesca deportiva se INICIA 01/11/2021 y FINALIZA el 01/05/2022
+b.Coincide con el reglamento general excepto para la pesca de la especie trucha de arroyo o fontinalis (Salvelinus fontinalis) la cual cierra el día 01/03/2022. A partir de esta fecha todos los ejemplares de esta especie deberán ser devueltos al agua vivos y con el menor daño posible.
+c. Se recomienda no vadear ríos y arroyos hasta el día 15/12/2021, para evitar producir daños en las camas de desoves, aun existentes en dicha fecha..
+d. Ante la declaración de la Emergencia Hídrica la temporada de pesca puede verse modificada en los ambientes vulnerables."
+            android:textSize="14sp"
+            android:textStyle="normal"
+            android:textColor="@color/black"
+            ></TextView>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_top"
+            android:text="AVISO IMPORTANTE COVID-19"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            ></TextView>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Las regulaciones que establece este reglamento de pesca deportiva no eximen del cumplimiento de cualquier restricción y/o regulación que sean establecidas por las autoridades sanitarias competentes en función de la pandemia de COVID-19."
+            android:textSize="14sp"
+            android:textStyle="normal"
+            android:textColor="@color/black"
+            ></TextView>
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+    </ScrollView>
 
 </FrameLayout>
