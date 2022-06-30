@@ -2,6 +2,7 @@ package com.example.pescarecreativa.modelo
 
 import android.content.ContentValues.TAG
 import android.util.Log
+import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.tasks.OnFailureListener
 import com.google.android.gms.tasks.OnSuccessListener
 import com.google.firebase.firestore.CollectionReference
@@ -15,7 +16,7 @@ class ReporteService {
     companion object{
         var listaReportesFirebase = listOf<Reporte>()
 
-        var listaReportes = listOf<Reporte>(
+        /*var listaReportes = listOf<Reporte>(
             Reporte("Captura 1", "Descripcion de la captura 1", "Playa Union", "https://diariolaportada.com.ar/wp-content/uploads/2022/04/pesca-3.jpg", "06/06/2022"),
             Reporte("Captura 2", "Descripcion de la captura 2", "Santa Isabel", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTSdiielKiJjpT9LlmyMlGucWSfwUZxdqShrw&usqp=CAU", "06/06/2022"),
             Reporte("Captura 4", "Descripcion de la captura 4", "Playa Union", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQeVN5D4IIf6VypLRn7cryvCsMlGRXKXp9cMg&usqp=CAU", "06/06/2022"),
@@ -26,7 +27,7 @@ class ReporteService {
             Reporte("Captura 8", "Descripcion de la captura 8", "Pto Madryn", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTL1NWjrUAzpRzoat3eGvqJrr-6AxqmEh4Y6g&usqp=CAU", "06/06/2022"),
             Reporte("Captura 9", "Descripcion de la captura 9", "Pto Madryn", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTCsVXRe5tO6F9W3k2SBnaMhtnoGG03ijRBWg&usqp=CAU", "06/06/2022"),
             Reporte("Captura 10", "Descripcion de la captura 10", "Playa Union", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTwrgKts4wD-4bOEMJ3qKD_kCict_1QNTf2fQ&usqp=CAU", "06/06/2022")
-        )
+        )*/
 
         fun obtenerReportes(db: FirebaseFirestore): List<Reporte> {
             var reporte: Reporte

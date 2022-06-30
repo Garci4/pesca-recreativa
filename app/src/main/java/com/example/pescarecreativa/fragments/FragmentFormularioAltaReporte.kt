@@ -14,8 +14,16 @@ import android.view.ViewGroup
 import android.widget.*
 import com.example.pescarecreativa.HomeActivity
 import com.example.pescarecreativa.R
+import com.example.pescarecreativa.databinding.ActivityHomeBinding
 import com.example.pescarecreativa.modelo.Reporte
 import com.example.pescarecreativa.modelo.ReporteService
+import com.google.android.gms.maps.CameraUpdateFactory
+import com.google.android.gms.maps.GoogleMap
+import com.google.android.gms.maps.OnMapReadyCallback
+import com.google.android.gms.maps.SupportMapFragment
+import com.google.android.gms.maps.model.BitmapDescriptorFactory
+import com.google.android.gms.maps.model.LatLng
+import com.google.android.gms.maps.model.MarkerOptions
 import com.google.android.gms.tasks.Continuation
 import com.google.android.gms.tasks.OnSuccessListener
 import com.google.android.gms.tasks.Task
@@ -30,7 +38,7 @@ import java.net.URI
 import java.text.SimpleDateFormat
 import java.util.*
 
-class FragmentFormularioAltaReporte : Fragment() {
+class FragmentFormularioAltaReporte : Fragment(), GoogleMap.OnMapClickListener, OnMapReadyCallback {
 
     private lateinit var db: FirebaseFirestore
     private lateinit var storage: FirebaseStorage
@@ -41,6 +49,11 @@ class FragmentFormularioAltaReporte : Fragment() {
 
     private var urlImagenEnFireStorage: String = "asdasd"
 
+    private lateinit var mMap: GoogleMap
+    private lateinit var binding: ActivityHomeBinding
+    private var mapReady = false
+
+    private lateinit var latlongMarcador: String
 
 
     companion object {
@@ -53,7 +66,13 @@ class FragmentFormularioAltaReporte : Fragment() {
         storage = FirebaseStorage.getInstance()
         storageReference = FirebaseStorage.getInstance().reference
 
-        return inflater.inflate(R.layout.fragment_formulario_alta_reporte, container, false)
+        var rootView = inflater.inflate(R.layout.fragment_formulario_alta_reporte, container, false)
+
+        val mapFragment = childFragmentManager.findFragmentById(R.id.mapView) as SupportMapFragment?
+
+        mapFragment?.getMapAsync(this)
+
+        return rootView
     }
 
 
@@ -115,11 +134,11 @@ class FragmentFormularioAltaReporte : Fragment() {
             val reporte = Reporte(
                 titulo = titulo,
                 descripcion = descripcion,
-                lugarCaptura = lugarCaptura,
+                lugarCaptura = latlongMarcador,
                 fechaCaptura = fechaCaptura.text.toString(),
                 foto = urlImagenEnFireStorage
             )
-            ReporteService.listaReportes = ReporteService.listaReportes + reporte
+            //ReporteService.listaReportes = ReporteService.listaReportes + reporte
             ReporteService.agregarReporte(db, reporte)
             activity?.let {
                 val intent = Intent (it, HomeActivity::class.java)
@@ -133,7 +152,6 @@ class FragmentFormularioAltaReporte : Fragment() {
         if(filePath != null){
             val ref = storageReference?.child(UUID.randomUUID().toString())
             val uploadTask = ref?.putFile(filePath!!)
-
             val urlTask = uploadTask?.continueWithTask(Continuation<UploadTask.TaskSnapshot, Task<Uri>> { task ->
                 if (!task.isSuccessful) {
                     task.exception?.let {
@@ -157,5 +175,26 @@ class FragmentFormularioAltaReporte : Fragment() {
         }else{
             Toast.makeText(context, "Please Upload an Image", Toast.LENGTH_SHORT).show()
         }
+    }
+
+    override fun onMapReady(googleMap: GoogleMap) {
+        var latitudMarcador: String
+        var longitudMarcador: String
+        mMap = googleMap
+        mMap.setOnMapClickListener { latlng -> // Clears the previously touched position
+            latitudMarcador = latlng.latitude.toString()
+            longitudMarcador = latlng.longitude.toString()
+
+            latlongMarcador = latitudMarcador.plus("*").plus(longitudMarcador)
+
+            mMap.addMarker(MarkerOptions().position(latlng).title("Este es un marcador")
+                .snippet("4 E. 28TH Street From $15 /per night")
+                .rotation(-15.0f)
+                .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_ORANGE)))
+        }
+    }
+
+    override fun onMapClick(p0: LatLng?) {
+        Toast.makeText(this.context, "sdafdsgfdghfd", Toast.LENGTH_SHORT).show()
     }
 }

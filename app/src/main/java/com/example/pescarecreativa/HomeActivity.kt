@@ -2,6 +2,7 @@ package com.example.pescarecreativa
 
 import android.os.Bundle
 import android.widget.MediaController
+import android.widget.Toast
 import android.widget.Toolbar
 import com.google.android.material.snackbar.Snackbar
 import androidx.appcompat.app.AppCompatActivity
@@ -15,16 +16,21 @@ import androidx.navigation.ui.setupWithNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.pescarecreativa.adapter.ReporteAdapter
+import com.example.pescarecreativa.fragments.FragmentRegulaciones
 import com.example.pescarecreativa.modelo.ReporteService
+import com.google.android.gms.maps.GoogleMap
+import com.google.android.gms.maps.OnMapReadyCallback
+import com.google.android.gms.maps.model.LatLng
 import com.google.android.material.navigation.NavigationView
 
-class HomeActivity : AppCompatActivity() {
+class HomeActivity : AppCompatActivity(){
 
     private lateinit var toolbar: androidx.appcompat.widget.Toolbar
     private lateinit var drawerLayout: DrawerLayout
     private lateinit var navigationView: NavigationView
     private lateinit var navController: NavController
     private lateinit var appBarConfiguration: AppBarConfiguration
+
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -49,5 +55,7 @@ class HomeActivity : AppCompatActivity() {
         val navController = findNavController(R.id.fragmentContainerView)
         return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
     }
+
+
 
 }
